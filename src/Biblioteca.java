@@ -15,7 +15,7 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
     int quantidadeUsuarios;
     Livro[] livrosBiblioteca = new Livro[1];
     int quantidadeLivros = 0;
-    private int escolha = 0;
+    private int escolha = 4;
     private int infinito = 0;
     public static void main(String[] args){
         Biblioteca biblioteca = new Biblioteca();
@@ -100,17 +100,19 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
         );
 
         System.out.println("Bem vindo a "+ biblioteca.nome);
-        System.out.println("Digite a opção que deseja: ");
-        System.out.println
-                (
-                "0) Sair" +
-                "1) listar livros  " +
-                "2) cadastrar livro" +
-                "3) cadastrar usuário");
-        Scanner scanner = new Scanner(System.in);
-        biblioteca.escolha = scanner.nextInt();
 
         while (biblioteca.infinito == 0) {
+
+            System.out.println("Digite a opção que deseja: ");
+            System.out.println
+                    (
+                    "0) Sair\n" +
+                    "1) listar livros\n" +
+                    "2) cadastrar livro\n" +
+                    "3) cadastrar usuário\n");
+            Scanner scanner = new Scanner(System.in);
+            biblioteca.escolha = scanner.nextInt();
+
             switch (biblioteca.escolha) {
 
                 case 0:
@@ -119,22 +121,29 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
                     break;
                 case 1:
                     biblioteca.imprimirLivros();
+                    biblioteca.escolha = 4;
                     break;
                 case 2:
 
                     break;
                 case 3:
-                    System.out.println("Digite o tipo de usuário:" +
-                            "1) Morador" +
-                            "2) Aluno" +
-                            "3) Professor");
+                    System.out.println("Digite o tipo de usuário:\n" +
+                            "1) Morador\n" +
+                            "2) Aluno\n" +
+                            "3) Professor\n");
                     int tipoUsuario = scanner.nextInt();
+
+                    scanner.nextLine();
 
                     System.out.println("Digite o nome do usuário: ");
                     String nome = scanner.nextLine();
 
+                    scanner.nextLine();
+
                     System.out.println("Digite o cpf do usuário: ");
                     String cpf = scanner.nextLine();
+
+                    scanner.nextLine();
 
                     System.out.println("Digite o id");
                     int id = scanner.nextInt();
@@ -188,6 +197,7 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
         switch (tipoUsuario) {
             case 1:
                 usuariosCadastrados[quantidadeUsuarios] = new Morador(nome, cpf, data, id);
+                System.out.println("Morador criado");
                 quantidadeUsuarios++;
                 break;
             case 2:
@@ -196,6 +206,7 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
                 String escola = scanner.nextLine();
 
                 usuariosCadastrados[quantidadeUsuarios] = new Aluno(nome, cpf, data, id, escola);
+                System.out.println("Aluno criado");
                 quantidadeUsuarios++;
                 break;
             case 3:
@@ -204,6 +215,8 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
                 String formacao = scanner.nextLine();
 
                 usuariosCadastrados[quantidadeUsuarios] = new Professor(nome, cpf, data, id, formacao);
+
+                System.out.println("Professor criado");
                 quantidadeUsuarios++;
                 break;
         }
