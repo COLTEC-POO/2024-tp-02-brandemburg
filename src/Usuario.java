@@ -32,5 +32,13 @@ void imprimirLivros(): deverá imprimir todos os livros que estão em empréstim
     void imprimirLivros(){
 
     }
+    void imprimirUsuario(){
+        System.out.println("Dados do Usuário:");
+        System.out.println("Nome: "+ nome);
+        System.out.println("CPF: "+ cpf);
+        System.out.println("Cadastro feito em: "+ data);
+        System.out.println("ID: "+ id);
+        System.out.println();
+    }
 
 }

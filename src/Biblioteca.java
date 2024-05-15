@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 public class Biblioteca {
     /*
-void cadastrarUsuario(): deverá cadastrar um novo usuário na biblioteca
 
 void realizarEmprestimo(): deverá inicializar o processo de empréstimo
 
@@ -11,12 +10,13 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
      */
 
     private String nome = "Biblioteca do Matheus";
-    Usuario[] usuariosCadastrados = new Usuario[10];
+    Usuario[] usuariosCadastrados = new Usuario[1];
     int quantidadeUsuarios;
     Livro[] livrosBiblioteca = new Livro[1];
     int quantidadeLivros = 0;
-    private int escolha = 4;
+    private int escolha = 10;
     private int infinito = 0;
+
     public static void main(String[] args){
         Biblioteca biblioteca = new Biblioteca();
 
@@ -100,7 +100,7 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
         );
 
         System.out.println("Bem vindo a "+ biblioteca.nome);
-
+        Scanner scanner = new Scanner(System.in);
         while (biblioteca.infinito == 0) {
 
             System.out.println("Digite a opção que deseja: ");
@@ -109,10 +109,10 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
                     "0) Sair\n" +
                     "1) listar livros\n" +
                     "2) cadastrar livro\n" +
-                    "3) cadastrar usuário\n");
-            Scanner scanner = new Scanner(System.in);
+                    "3) listar usuários\n" +
+                    "4) cadastrar usuário\n");
             biblioteca.escolha = scanner.nextInt();
-
+            scanner.nextLine();
             switch (biblioteca.escolha) {
 
                 case 0:
@@ -121,44 +121,35 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
                     break;
                 case 1:
                     biblioteca.imprimirLivros();
-                    biblioteca.escolha = 4;
+                    biblioteca.escolha = 10;
                     break;
                 case 2:
 
                     break;
                 case 3:
-                    System.out.println("Digite o tipo de usuário:\n" +
-                            "1) Morador\n" +
-                            "2) Aluno\n" +
-                            "3) Professor\n");
-                    int tipoUsuario = scanner.nextInt();
-
-                    scanner.nextLine();
-
-                    System.out.println("Digite o nome do usuário: ");
-                    String nome = scanner.nextLine();
-
-                    scanner.nextLine();
-
-                    System.out.println("Digite o cpf do usuário: ");
-                    String cpf = scanner.nextLine();
-
-                    scanner.nextLine();
-
-                    System.out.println("Digite o id");
-                    int id = scanner.nextInt();
-
-
-                    biblioteca.cadastrarUsuario(nome, cpf, new Date(), id, tipoUsuario);
+                    biblioteca.imprimirUsuários();
+                    biblioteca.escolha = 10;
+                    break;
+                case 4:
+                    biblioteca.cadastrarUsuario();
+                    biblioteca.escolha = 10;
                     break;
             }
         }
+        scanner.close();
 
     }
     void imprimirLivros(){
         for (Livro livro: livrosBiblioteca){
             if (livro != null) {
                 livro.imprimir();
+            }
+        }
+    }
+    void imprimirUsuários(){
+        for (Usuario usuario: usuariosCadastrados){
+            if (usuario != null) {
+                usuario.imprimirUsuario();
             }
         }
     }
@@ -183,7 +174,7 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
     * tipo 2: Aluno
     * tipo 3: Professor
     * */
-    void cadastrarUsuario(String nome, String cpf, Date data, int id, int tipoUsuario){
+    void cadastrarUsuario(){
         Scanner scanner = new Scanner(System.in);
         if (quantidadeUsuarios >= usuariosCadastrados.length){
             Usuario[] auxiliar = new Usuario[usuariosCadastrados.length * 2];
@@ -194,18 +185,35 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
             usuariosCadastrados = auxiliar;
         }
 
+        System.out.println(
+                "Digite o tipo de usuário:\n" +
+                "1) Morador\n" +
+                "2) Aluno\n" +
+                "3) Professor\n");
+        int tipoUsuario = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Digite o nome do usuário: ");
+        String nome = scanner.nextLine();
+
+        System.out.println("Digite o cpf do usuário: ");
+        String cpf = scanner.nextLine();
+
+        System.out.println("Digite o id");
+        int id = scanner.nextInt();
+        //scanner.nextLine();
+
         switch (tipoUsuario) {
             case 1:
-                usuariosCadastrados[quantidadeUsuarios] = new Morador(nome, cpf, data, id);
+                usuariosCadastrados[quantidadeUsuarios] = new Morador(nome, cpf, new Date(), id);
                 System.out.println("Morador criado");
                 quantidadeUsuarios++;
                 break;
             case 2:
-
                 System.out.println("Digite sua escola: ");
                 String escola = scanner.nextLine();
 
-                usuariosCadastrados[quantidadeUsuarios] = new Aluno(nome, cpf, data, id, escola);
+                usuariosCadastrados[quantidadeUsuarios] = new Aluno(nome, cpf, new Date(), id, escola);
                 System.out.println("Aluno criado");
                 quantidadeUsuarios++;
                 break;
@@ -214,11 +222,13 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
                 System.out.println("Digite sua formação: ");
                 String formacao = scanner.nextLine();
 
-                usuariosCadastrados[quantidadeUsuarios] = new Professor(nome, cpf, data, id, formacao);
-
+                usuariosCadastrados[quantidadeUsuarios] = new Professor(nome, cpf, new Date(), id, formacao);
                 System.out.println("Professor criado");
                 quantidadeUsuarios++;
                 break;
+            default:
+                System.out.println("Opção inválida!\n");
         }
+        scanner.close();
     }
 }

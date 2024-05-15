@@ -8,4 +8,8 @@ public class Aluno extends Usuario{
         super(nome, cpf, data, id);
         this.escola = escola;
     }
+    void imprimirUsuario(){
+        super.imprimirUsuario();
+        System.out.println("Escola: "+escola);
+    }
 }

@@ -9,4 +9,9 @@ public class Professor extends Usuario{
         super(nome, cpf, data, id);
         this.formacao = formacao;
     }
+    @Override
+    void imprimirUsuario(){
+        super.imprimirUsuario();
+        System.out.println("Formação: "+ formacao);
+    }
 }
