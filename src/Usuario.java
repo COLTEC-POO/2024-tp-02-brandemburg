@@ -38,7 +38,12 @@ void imprimirLivros(): deverá imprimir todos os livros que estão em empréstim
         System.out.println("CPF: "+ cpf);
         System.out.println("Cadastro feito em: "+ data);
         System.out.println("ID: "+ id);
-        System.out.println();
+    }
+    void imprimirLivrosEmprestados(Livro[] vetorDeLivros){
+        System.out.println("Livros emprestados:\n");
+        for (Livro livro: vetorDeLivros){
+            livro.imprimir();
+        }
     }
 
 }
