@@ -14,4 +14,7 @@ public class Professor extends Usuario{
         super.imprimirUsuario();
         System.out.println("Formação: "+ formacao);
     }
+    void imprimirLivrosEmprestados(){
+        super.imprimirLivrosEmprestados(livrosProfessor);
+    }
 }

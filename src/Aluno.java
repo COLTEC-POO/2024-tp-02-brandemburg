@@ -12,4 +12,7 @@ public class Aluno extends Usuario{
         super.imprimirUsuario();
         System.out.println("Escola: "+escola);
     }
+    void imprimirLivrosEmprestados(){
+        super.imprimirLivrosEmprestados(livrosAluno);
+    }
 }

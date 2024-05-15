@@ -6,4 +6,7 @@ public class Morador extends Usuario{
     public Morador(String nome, String cpf, Date data, int id) {
         super(nome, cpf, data, id);
     }
+    void imprimirLivrosEmprestados(){
+        super.imprimirLivrosEmprestados(livrosMorador);
+    }
 }

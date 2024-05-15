@@ -143,7 +143,9 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
                     "3) listar usuários\n" +
                     "4) cadastrar usuário\n"+
                     "5) Pegar livro\n" +
-                    "6) Devolver livro");
+                    "6) Devolver livro"+
+                    "7)Listar livros emprestados"
+                    );
             biblioteca.escolha = scanner.nextInt();
             scanner.nextLine();
             switch (biblioteca.escolha) {
@@ -171,6 +173,9 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
 
                     break;
                 case 6:
+
+                    break;
+                case 7:
 
                     break;
             }

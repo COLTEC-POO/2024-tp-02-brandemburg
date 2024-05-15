@@ -29,9 +29,7 @@ void imprimirLivros(): deverá imprimir todos os livros que estão em empréstim
     boolean pegarLivro(){
         return true;
     }
-    void imprimirLivros(){
 
-    }
     void imprimirUsuario(){
         System.out.println("Dados do Usuário:");
         System.out.println("Nome: "+ nome);
@@ -39,10 +37,12 @@ void imprimirLivros(): deverá imprimir todos os livros que estão em empréstim
         System.out.println("Cadastro feito em: "+ data);
         System.out.println("ID: "+ id);
     }
-    void imprimirLivrosEmprestados(Livro[] vetorDeLivros){
+    void imprimirLivrosEmprestados(Livro[] vetorDeLivros){//Aqui tem que ler o vetor de livros presente nas subclasses
         System.out.println("Livros emprestados:\n");
         for (Livro livro: vetorDeLivros){
-            livro.imprimir();
+            if (livro != null) {
+                livro.imprimir();
+            }
         }
     }
 
