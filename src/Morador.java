@@ -20,4 +20,23 @@ public class Morador extends Usuario{
         imprimirLivrosEmprestados();
         return true;
     }
+    public Livro[] getVetor(){
+        return livrosMorador;
+    }
+
+    boolean devolverLivro(Livro livro){
+        int i = 0;
+
+        do{
+            if (livrosMorador[i].getCodigoLivro() == livro.getCodigoLivro()){
+                livrosMorador[i] = null;
+                System.out.println("Livro devolvido com sucesso!");
+                return true;
+            }
+            else{
+                System.out.println("Erro fatal");
+                return false;
+            }
+        }while ( i < livrosMorador.length);
+    }
 }

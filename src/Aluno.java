@@ -26,4 +26,23 @@ public class Aluno extends Usuario{
         imprimirLivrosEmprestados();
         return true;
     }
+    public Livro[] getVetor(){
+        return livrosAluno;
+    }
+
+    boolean devolverLivro(Livro livro){
+        int i = 0;
+
+        do{
+            if (livrosAluno[i].getCodigoLivro() == livro.getCodigoLivro()){
+                livrosAluno[i] = null;
+                System.out.println("Livro devolvido com sucesso!");
+                return true;
+            }
+            else{
+                System.out.println("Erro fatal");
+                return false;
+            }
+        }while ( i < livrosAluno.length);
+    }
 }

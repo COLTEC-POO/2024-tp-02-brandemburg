@@ -23,6 +23,10 @@ public class Livro {
         return cpf;
     }
 
+    public int getCodigoLivro() {
+        return codigoLivro;
+    }
+
     public void imprimir(){
 
         System.out.println("Dados do livro:");

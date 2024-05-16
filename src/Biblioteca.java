@@ -165,11 +165,18 @@ public class Biblioteca {
                     break;
                 case 5:
                     biblioteca.realizarEmprestimo();
+                    biblioteca.escolha = 10;
                     break;
                 case 6:
-
+                    biblioteca.realizarDevolucao();
+                    biblioteca.escolha = 10;
                     break;
                 case 7:
+                    System.out.println("Digite o id de seu usuário:");
+                    int usuarioSelecionado = scanner.nextInt();
+                    scanner.nextLine();
+
+                    biblioteca.usuariosCadastrados[usuarioSelecionado].imprimirLivrosEmprestados(biblioteca.usuariosCadastrados[usuarioSelecionado].getVetor());
 
                     break;
             }
@@ -314,10 +321,7 @@ public class Biblioteca {
                 System.out.println("Opção inválida!\n");
         }
     }
-        /*
-
-void realizarEmprestimo(): deverá inicializar o processo de empréstimo
-
+    /*
 void realizarDevolucao(): deverá iniciar o processo de devolução
      */
         void realizarEmprestimo(){
@@ -344,6 +348,22 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
             }else {
                 System.out.println("Livro já emprestado!");
             }
+        }
+        void realizarDevolucao(){
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Digite o número correspondente ao usuário(Seu id): ");
+            int UsuarioSelecionado = scanner.nextInt();
+            scanner.nextLine();
+
+            System.out.println("Digite o livro que gostaria de devolver: ");
+            usuariosCadastrados[UsuarioSelecionado].imprimirLivrosEmprestados(usuariosCadastrados[UsuarioSelecionado].getVetor());
+            int LivroEscolhido = scanner.nextInt();
+            scanner.nextLine();
+
+            usuariosCadastrados[UsuarioSelecionado].devolverLivro(livrosBiblioteca[LivroEscolhido]);
+            livrosBiblioteca[LivroEscolhido].setCpf(null);
+            System.out.println("Livro devolvido com sucesso!");
         }
 
         private boolean livroDisponivel(Livro livro){

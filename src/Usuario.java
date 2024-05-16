@@ -14,6 +14,7 @@ void imprimirLivros(): deverá imprimir todos os livros que estão em empréstim
     protected String cpf;
     protected Date data;
     protected int id;
+    protected Livro[] livros;
 
     Usuario(String nome, String cpf, Date data, int id){
         this.nome = nome;
@@ -28,8 +29,6 @@ void imprimirLivros(): deverá imprimir todos os livros que estão em empréstim
     }
 
     boolean devolverLivro(Livro livro){
-        //deve devolver o livro sem mais nem menos
-        //retorna verdadeiro ao completar a ação e marca a antiga posição do livro como null
         return true;
     }
     boolean pegarLivro(Livro livro){
@@ -50,6 +49,10 @@ void imprimirLivros(): deverá imprimir todos os livros que estão em empréstim
                 livro.imprimir();
             }
         }
+    }
+
+    public Livro[] getVetor(){
+        return livros;
     }
 
 }

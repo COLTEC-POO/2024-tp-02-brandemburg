@@ -28,4 +28,22 @@ public class Professor extends Usuario{
         imprimirLivrosEmprestados();
         return true;
     }
+    boolean devolverLivro(Livro livro){
+        int i = 0;
+
+        do{
+            if (livrosProfessor[i].getCodigoLivro() == livro.getCodigoLivro()){
+                livrosProfessor[i] = null;
+                System.out.println("Livro devolvido com sucesso!");
+                return true;
+            }
+            else{
+                System.out.println("Erro fatal");
+                return false;
+            }
+        }while ( i < livrosProfessor.length);
+    }
+    public Livro[] getVetor(){
+        return livrosProfessor;
+    }
 }
