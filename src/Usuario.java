@@ -23,10 +23,16 @@ void imprimirLivros(): deverá imprimir todos os livros que estão em empréstim
 
     }
 
-    boolean devolverLivro(){
+    public String getCpf() {
+        return cpf;
+    }
+
+    boolean devolverLivro(Livro livro){
+        //deve devolver o livro sem mais nem menos
+        //retorna verdadeiro ao completar a ação e marca a antiga posição do livro como null
         return true;
     }
-    boolean pegarLivro(){
+    boolean pegarLivro(Livro livro){
         return true;
     }
 

@@ -4,12 +4,23 @@ public class Livro {
     private String autor;
     private int ano_de_publicacao;
     private String editora;
+    private int codigoLivro;
+    private String cpf = null;
 
-    public Livro(String titulo, String autor, int ano_de_publicacao, String editora) {
+    public Livro(String titulo, String autor, int ano_de_publicacao, String editora, int codigoLivro) {
         this.titulo = titulo;
         this.ano_de_publicacao = ano_de_publicacao;
         this.autor = autor;
         this.editora = editora;
+        this.codigoLivro = codigoLivro;
+    }
+
+    void setCpf(String cpf){
+        this.cpf = cpf;
+    }
+
+    public String getCpf() {
+        return cpf;
     }
 
     public void imprimir(){

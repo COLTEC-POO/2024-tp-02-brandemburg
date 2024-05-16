@@ -2,12 +2,6 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class Biblioteca {
-    /*
-
-void realizarEmprestimo(): deverá inicializar o processo de empréstimo
-
-void realizarDevolucao(): deverá iniciar o processo de devolução
-     */
 
     private String nome = "Biblioteca do Matheus";
     Usuario[] usuariosCadastrados = new Usuario[1];
@@ -103,21 +97,21 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
                 1,
                 "José",
                 "134.091.391-32",
-                001,
+                0,
                 null
         );
         biblioteca.cadastrarUsuarioDentro(
                 1,
                 "Maria",
                 "210.564.783-45",
-                002,
+                1,
                 null
         );
         biblioteca.cadastrarUsuarioDentro(
                 1,
                 "Carlos",
                 "055.789.123-98",
-                003,
+                2,
                 null
         );
         //Professor
@@ -125,7 +119,7 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
                 3,
                 "João",
                 "055.182.316-98",
-                004,
+                3,
                 "Ciências da computação"
         );
 
@@ -143,7 +137,7 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
                     "3) listar usuários\n" +
                     "4) cadastrar usuário\n"+
                     "5) Pegar livro\n" +
-                    "6) Devolver livro"+
+                    "6) Devolver livro\n"+
                     "7)Listar livros emprestados"
                     );
             biblioteca.escolha = scanner.nextInt();
@@ -162,7 +156,7 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
                     biblioteca.cadastrarLivro();
                     break;
                 case 3:
-                    biblioteca.imprimirUsuários();
+                    biblioteca.imprimirUsuarios();
                     biblioteca.escolha = 10;
                     break;
                 case 4:
@@ -170,7 +164,7 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
                     biblioteca.escolha = 10;
                     break;
                 case 5:
-
+                    biblioteca.realizarEmprestimo();
                     break;
                 case 6:
 
@@ -189,7 +183,7 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
             }
         }
     }
-    void imprimirUsuários(){
+    void imprimirUsuarios(){
         for (Usuario usuario: usuariosCadastrados){
             if (usuario != null) {
                 usuario.imprimirUsuario();
@@ -226,7 +220,7 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
             livrosBiblioteca = auxiliar;
         }
 
-        livrosBiblioteca[quantidadeLivros] = new Livro(titulo, autor, ano_de_publicacao, editora);
+        livrosBiblioteca[quantidadeLivros] = new Livro(titulo, autor, ano_de_publicacao, editora, quantidadeLivros);
         quantidadeLivros++;
     }
 
@@ -320,4 +314,43 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
                 System.out.println("Opção inválida!\n");
         }
     }
+        /*
+
+void realizarEmprestimo(): deverá inicializar o processo de empréstimo
+
+void realizarDevolucao(): deverá iniciar o processo de devolução
+     */
+        void realizarEmprestimo(){
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Digite o número correspondente ao seu usuário(Seu id): ");
+            imprimirUsuarios();
+
+            int UsuarioSelecionado = scanner.nextInt();
+            scanner.nextLine();
+
+            System.out.println("Digite o livro que gostaria de pegar(Id do livro): ");
+            int LivroEscolhido = scanner.nextInt();
+            scanner.nextLine();
+
+            if (livroDisponivel(livrosBiblioteca[LivroEscolhido])) {
+
+                if (usuariosCadastrados[UsuarioSelecionado].pegarLivro(livrosBiblioteca[LivroEscolhido])) {
+                    System.out.println("Livro emprestádo com sucesso!\n");
+                    livrosBiblioteca[LivroEscolhido].setCpf(usuariosCadastrados[UsuarioSelecionado].getCpf());
+                } else {
+                    System.out.println("Falha ao emprestar o livro, limite de livros atingido!");
+                }
+            }else {
+                System.out.println("Livro já emprestado!");
+            }
+        }
+
+        private boolean livroDisponivel(Livro livro){
+            if (livro.getCpf() == null) {
+                return true;
+            }else {
+                return false;
+            }
+        }
 }
