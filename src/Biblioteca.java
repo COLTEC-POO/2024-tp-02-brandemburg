@@ -321,9 +321,7 @@ public class Biblioteca {
                 System.out.println("Opção inválida!\n");
         }
     }
-    /*
-void realizarDevolucao(): deverá iniciar o processo de devolução
-     */
+
         void realizarEmprestimo(){
             Scanner scanner = new Scanner(System.in);
 
@@ -357,7 +355,8 @@ void realizarDevolucao(): deverá iniciar o processo de devolução
             scanner.nextLine();
 
             System.out.println("Digite o livro que gostaria de devolver: ");
-            usuariosCadastrados[UsuarioSelecionado].imprimirLivrosEmprestados(usuariosCadastrados[UsuarioSelecionado].getVetor());
+            Livro[] vetorLivrosUsuario = usuariosCadastrados[UsuarioSelecionado].getVetor();
+            usuariosCadastrados[UsuarioSelecionado].imprimirLivrosEmprestados(vetorLivrosUsuario);
             int LivroEscolhido = scanner.nextInt();
             scanner.nextLine();
 

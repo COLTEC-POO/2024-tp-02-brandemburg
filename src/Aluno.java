@@ -34,15 +34,17 @@ public class Aluno extends Usuario{
         int i = 0;
 
         do{
-            if (livrosAluno[i].getCodigoLivro() == livro.getCodigoLivro()){
-                livrosAluno[i] = null;
-                System.out.println("Livro devolvido com sucesso!");
-                return true;
+            if (livrosAluno[i]!= null) {
+                if (livrosAluno[i].getCodigoLivro() == livro.getCodigoLivro()) {
+                    livrosAluno[i] = null;
+                    System.out.println("Livro devolvido com sucesso!");
+                    return true;
+                }
+                i++;
             }
-            else{
-                System.out.println("Erro fatal");
-                return false;
-            }
+            i++;
         }while ( i < livrosAluno.length);
+        System.out.println("Livro não encontrado...");
+        return false;
     }
 }

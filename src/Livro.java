@@ -34,6 +34,7 @@ public class Livro {
         System.out.println("Autor: "+ autor);
         System.out.println("Editora: "+ editora);
         System.out.println("Ano de publicação: "+ ano_de_publicacao);
+        System.out.println("Código do livro: "+ codigoLivro);
         System.out.println();
 
     }

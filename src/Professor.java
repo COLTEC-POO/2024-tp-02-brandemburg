@@ -32,16 +32,18 @@ public class Professor extends Usuario{
         int i = 0;
 
         do{
-            if (livrosProfessor[i].getCodigoLivro() == livro.getCodigoLivro()){
-                livrosProfessor[i] = null;
-                System.out.println("Livro devolvido com sucesso!");
-                return true;
+            if (livrosProfessor[i]!= null) {
+                if (livrosProfessor[i].getCodigoLivro() == livro.getCodigoLivro()) {
+                    livrosProfessor[i] = null;
+                    System.out.println("Livro devolvido com sucesso!");
+                    return true;
+                }
+                i++;
             }
-            else{
-                System.out.println("Erro fatal");
-                return false;
-            }
+            i++;
         }while ( i < livrosProfessor.length);
+        System.out.println("Livro não encontrado...");
+        return false;
     }
     public Livro[] getVetor(){
         return livrosProfessor;

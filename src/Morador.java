@@ -28,15 +28,17 @@ public class Morador extends Usuario{
         int i = 0;
 
         do{
-            if (livrosMorador[i].getCodigoLivro() == livro.getCodigoLivro()){
-                livrosMorador[i] = null;
-                System.out.println("Livro devolvido com sucesso!");
-                return true;
+            if (livrosMorador[i]!= null) {
+                if (livrosMorador[i].getCodigoLivro() == livro.getCodigoLivro()) {
+                    livrosMorador[i] = null;
+                    System.out.println("Livro devolvido com sucesso!");
+                    return true;
+                }
+                i++;
             }
-            else{
-                System.out.println("Erro fatal");
-                return false;
-            }
+            i++;
         }while ( i < livrosMorador.length);
+        System.out.println("Livro não encontrado...");
+        return false;
     }
 }
