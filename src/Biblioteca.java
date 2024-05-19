@@ -261,13 +261,9 @@ public class Biblioteca {
         System.out.println("Digite o cpf do usuário: ");
         String cpf = scanner.nextLine();
 
-        System.out.println("Digite o id");
-        int id = scanner.nextInt();
-        scanner.nextLine();
-
         switch (tipoUsuario) {
             case 1:
-                usuariosCadastrados[quantidadeUsuarios] = new Morador(nome, cpf, new Date(), id);
+                usuariosCadastrados[quantidadeUsuarios] = new Morador(nome, cpf, new Date(), quantidadeUsuarios);
                 System.out.println("Morador criado");
                 quantidadeUsuarios++;
                 break;
@@ -275,7 +271,7 @@ public class Biblioteca {
                 System.out.println("Digite sua escola: ");
                 String escola = scanner.nextLine();
 
-                usuariosCadastrados[quantidadeUsuarios] = new Aluno(nome, cpf, new Date(), id, escola);
+                usuariosCadastrados[quantidadeUsuarios] = new Aluno(nome, cpf, new Date(), quantidadeUsuarios, escola);
                 System.out.println("Aluno criado");
                 quantidadeUsuarios++;
                 break;
@@ -284,7 +280,7 @@ public class Biblioteca {
                 System.out.println("Digite sua formação: ");
                 String formacao = scanner.nextLine();
 
-                usuariosCadastrados[quantidadeUsuarios] = new Professor(nome, cpf, new Date(), id, formacao);
+                usuariosCadastrados[quantidadeUsuarios] = new Professor(nome, cpf, new Date(), quantidadeUsuarios, formacao);
                 System.out.println("Professor criado");
                 quantidadeUsuarios++;
                 break;
